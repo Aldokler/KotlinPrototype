@@ -5,5 +5,6 @@ package com.example.kotlinnotes.data.model
  */
 data class LoggedInUser(
     val userId: String,
+    val password: String,
     val displayName: String
 )

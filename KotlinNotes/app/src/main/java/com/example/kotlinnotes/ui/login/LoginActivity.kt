@@ -1,6 +1,6 @@
 package com.example.kotlinnotes.ui.login
 
-import android.app.Activity
+import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -14,7 +14,9 @@ import android.widget.EditText
 import android.widget.Toast
 import com.example.kotlinnotes.databinding.ActivityLoginBinding
 
-import com.example.kotlinnotes.R
+import com.example.kotlinnotes.ui.notes.NotesActivity
+
+import java.lang.Class
 
 class LoginActivity : AppCompatActivity() {
 
@@ -59,10 +61,11 @@ class LoginActivity : AppCompatActivity() {
             if (loginResult.success != null) {
                 updateUiWithUser(loginResult.success)
             }
-            setResult(Activity.RESULT_OK)
+            setResult(RESULT_OK)
 
             //Complete and destroy login activity once successful
             finish()
+
         })
 
         username.afterTextChanged {
@@ -99,9 +102,11 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun updateUiWithUser(model: LoggedInUserView) {
-        val welcome = getString(R.string.welcome)
+        val welcome = "Hola! "
         val displayName = model.displayName
         // TODO : initiate successful logged in experience
+        val intent = Intent(this, NotesActivity::class.java)
+        startActivity(intent)
         Toast.makeText(
             applicationContext,
             "$welcome $displayName",
