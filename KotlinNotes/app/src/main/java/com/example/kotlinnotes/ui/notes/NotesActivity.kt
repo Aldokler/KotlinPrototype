@@ -1,5 +1,6 @@
 package com.example.kotlinnotes.ui.notes
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
@@ -28,10 +29,17 @@ class NotesActivity : AppCompatActivity(){
         binding.add.setOnClickListener{
             val noteTitle = binding.rotulador.text.toString()
             if(noteTitle.isNotEmpty()){
-                val nota = Note(noteTitle, "")
+                val nota = Note(noteTitle, " ")
                 noteAdapter.newNote(nota)
                 binding.rotulador.text.clear()
             }
+        }
+
+        binding.delete.setOnClickListener{
+            println("holis")
+            val intent = Intent(this, NoteContent::class.java)
+            println("holis")
+            startActivity(intent)
         }
     }
 }

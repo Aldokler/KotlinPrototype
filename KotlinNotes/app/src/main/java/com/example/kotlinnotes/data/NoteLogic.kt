@@ -1,5 +1,6 @@
 package com.example.kotlinnotes.data
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,6 +21,7 @@ class NoteLogic(
     class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
+        binding = ActivityNoteBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return NoteViewHolder(
             LayoutInflater.from(parent.context).inflate(
                 R.layout.activity_note,
