@@ -16,8 +16,6 @@ import com.example.kotlinnotes.databinding.ActivityLoginBinding
 
 import com.example.kotlinnotes.ui.notes.NotesActivity
 
-import java.lang.Class
-
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var loginViewModel: LoginViewModel
@@ -34,8 +32,7 @@ class LoginActivity : AppCompatActivity() {
         val login = binding.login
         val loading = binding.loading
 
-        loginViewModel = ViewModelProvider(this, LoginViewModelFactory())
-            .get(LoginViewModel::class.java)
+        loginViewModel = ViewModelProvider(this, LoginViewModelFactory())[LoginViewModel::class.java]
 
         loginViewModel.loginFormState.observe(this@LoginActivity, Observer {
             val loginState = it ?: return@Observer
@@ -104,7 +101,6 @@ class LoginActivity : AppCompatActivity() {
     private fun updateUiWithUser(model: LoggedInUserView) {
         val welcome = "Hola! "
         val displayName = model.displayName
-        // TODO : initiate successful logged in experience
         val intent = Intent(this, NotesActivity::class.java)
         startActivity(intent)
         Toast.makeText(
@@ -115,6 +111,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun showLoginFailed(@StringRes errorString: Int) {
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
         Toast.makeText(applicationContext, errorString, Toast.LENGTH_SHORT).show()
     }
 }

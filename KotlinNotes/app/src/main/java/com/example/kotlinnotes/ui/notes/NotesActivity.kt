@@ -1,15 +1,12 @@
 package com.example.kotlinnotes.ui.notes
 
-import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView.Adapter
-import com.example.kotlinnotes.R
 import com.example.kotlinnotes.data.NoteLogic
 import com.example.kotlinnotes.data.model.Note
 import com.example.kotlinnotes.databinding.ActivityNotesBinding
+import kotlinx.android.synthetic.main.activity_notes.*
 
 class NotesActivity : AppCompatActivity(){
 
@@ -28,6 +25,7 @@ class NotesActivity : AppCompatActivity(){
 
         binding.add.setOnClickListener{
             val noteTitle = binding.rotulador.text.toString()
+            println(noteTitle)
             if(noteTitle.isNotEmpty()){
                 val nota = Note(noteTitle, " ")
                 noteAdapter.newNote(nota)
@@ -36,10 +34,9 @@ class NotesActivity : AppCompatActivity(){
         }
 
         binding.delete.setOnClickListener{
-            println("holis")
-            val intent = Intent(this, NoteContent::class.java)
-            println("holis")
-            startActivity(intent)
+            noteAdapter.burnNotes()
+            //val intent = Intent(this, NoteContent::class.java)
+            //startActivity(intent)
         }
     }
 }
