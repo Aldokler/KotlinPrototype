@@ -17,9 +17,12 @@ class NoteLogic(
     private val notas: MutableList<Note>
 ) : RecyclerView.Adapter<NoteLogic.NoteViewHolder>(){
 
+
     class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
+
+
         return NoteViewHolder(
             LayoutInflater.from(parent.context).inflate(
                 R.layout.activity_note,
@@ -51,6 +54,7 @@ class NoteLogic(
     }
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
+
         val curNote = notas[position]
         println(curNote)
         holder.itemView.apply {

@@ -1,6 +1,7 @@
 package com.example.kotlinnotes.data
 
 import com.example.kotlinnotes.data.model.LoggedInUser
+import com.example.kotlinnotes.ui.login.LoginActivity
 import java.io.IOException
 
 /**
@@ -12,6 +13,8 @@ class LoginDataSource {
         try {
             // TODO: handle loggedInUser authentication
             if ((username == "Usuario") and (password == "incorrecta")){
+
+
                 val fakeUser = LoggedInUser(username, password, username)
                 return Result.Success(fakeUser)
             }
